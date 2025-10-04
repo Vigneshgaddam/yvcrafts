@@ -1,14 +1,11 @@
-import requests
 from PIL import Image
-from io import BytesIO
-import os
 
-# Download the user's logo image
-logo_path = 'logo_yv_crafts.png'
+# Load previously uploaded logo file (logo_yv_crafts.jpg)
+logo_path = 'logo_yv_crafts.jpg'
 logo_img = Image.open(logo_path)
 
-# Resize logo for web app header usage
+# Resize the logo for web header usage (PNG with transparency if possible)
 logo_resized = logo_img.resize((120, 120))
+logo_resized = logo_resized.convert("RGBA") # ensure PNG mode
 logo_resized.save('logo_yv_crafts.png')
 
-'Logo processed and saved as logo_yv_crafts.png for integration.'
